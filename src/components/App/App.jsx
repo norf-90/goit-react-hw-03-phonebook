@@ -12,24 +12,18 @@ class App extends Component {
   };
 
   componentDidMount() {
-    console.log('componentDidMount...');
     const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
-    console.log('eсть ли запись в LocalStorage: ' + Boolean(parsedContacts));
     if (parsedContacts) {
-      console.log('get data from LocalStorage to state');
       this.setState({ contacts: parsedContacts });
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    console.log('componentDidUpdate...');
-    // const { prevContacts } = prevState.contacts;
+  componentDidUpdate() {
+    const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
     const { contacts } = this.state;
-    if (this.state.contacts !== prevState.contacts) {
-      // console.table(prevState.contacts);
-      // console.table(this.state.contacts);
+
+    if (contacts.length !== parsedContacts?.length) {
       localStorage.setItem('contacts', JSON.stringify(contacts));
-      console.log('from state to LocalStorage');
     }
   }
 
@@ -75,7 +69,6 @@ class App extends Component {
 
   render() {
     const renderData = this.filterContacts();
-    console.log('render...');
 
     return (
       <>
@@ -84,7 +77,6 @@ class App extends Component {
           <ContactForm handleSubmit={this.handleSubmit.bind(this)} />
           <SecondaryTitle>Contacts</SecondaryTitle>
           <FilterForm onChange={this.handleChange} />
-
           <ContactList renderData={renderData} onDelete={this.deleteContact} />
         </Layout>
         <GlobalStyles />
