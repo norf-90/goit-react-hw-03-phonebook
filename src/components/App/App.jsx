@@ -23,7 +23,7 @@ class App extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     console.log('componentDidUpdate...');
-    const { prevContacts } = prevState.contacts;
+    // const { prevContacts } = prevState.contacts;
     const { contacts } = this.state;
     if (this.state !== prevState.contacts) {
       // console.table(prevState.contacts);
