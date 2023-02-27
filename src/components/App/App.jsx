@@ -11,7 +11,28 @@ class App extends Component {
     filter: '',
   };
 
-  // initialValues = { number: '', name: '' };
+  componentDidMount() {
+    console.log('componentDidMount...');
+    // const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
+    // console.log('eсть ли запись в LocalStorage: ' + Boolean(parsedContacts));
+    // if (parsedContacts) {
+    //   console.log('get data from LocalStorage to state');
+    //   this.setState({ contacts: parsedContacts });
+    // }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('componentDidUpdate...');
+    // const { prevContacts } = prevState.contacts;
+    // const { contacts } = this.state;
+    // if (this.state !== prevState.contacts) {
+    //   // console.table(prevState.contacts);
+    //   // console.table(this.state.contacts);
+
+    //   localStorage.setItem('contacts', JSON.stringify(contacts));
+    //   console.log('from state to LocalStorage');
+    // }
+  }
 
   handleChange = evt => {
     const { name, value } = evt.currentTarget;
@@ -26,6 +47,7 @@ class App extends Component {
     );
 
     resetForm();
+
     if (isNameAlreadyExist) {
       alert(`${name} is already in contacts.`);
       return;
@@ -54,6 +76,7 @@ class App extends Component {
 
   render() {
     const renderData = this.filterContacts();
+    console.log('render...');
 
     return (
       <>
