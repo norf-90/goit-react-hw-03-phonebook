@@ -13,25 +13,24 @@ class App extends Component {
 
   componentDidMount() {
     console.log('componentDidMount...');
-    // const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
-    // console.log('eсть ли запись в LocalStorage: ' + Boolean(parsedContacts));
-    // if (parsedContacts) {
-    //   console.log('get data from LocalStorage to state');
-    //   this.setState({ contacts: parsedContacts });
-    // }
+    const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
+    console.log('eсть ли запись в LocalStorage: ' + Boolean(parsedContacts));
+    if (parsedContacts) {
+      console.log('get data from LocalStorage to state');
+      this.setState({ contacts: parsedContacts });
+    }
   }
 
   componentDidUpdate(prevProps, prevState) {
     console.log('componentDidUpdate...');
-    // const { prevContacts } = prevState.contacts;
-    // const { contacts } = this.state;
-    // if (this.state !== prevState.contacts) {
-    //   // console.table(prevState.contacts);
-    //   // console.table(this.state.contacts);
-
-    //   localStorage.setItem('contacts', JSON.stringify(contacts));
-    //   console.log('from state to LocalStorage');
-    // }
+    const { prevContacts } = prevState.contacts;
+    const { contacts } = this.state;
+    if (this.state !== prevState.contacts) {
+      // console.table(prevState.contacts);
+      // console.table(this.state.contacts);
+      localStorage.setItem('contacts', JSON.stringify(contacts));
+      console.log('from state to LocalStorage');
+    }
   }
 
   handleChange = evt => {
