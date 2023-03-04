@@ -32,7 +32,7 @@ class App extends Component {
     this.setState({ [name]: value });
   };
 
-  handleSubmit(values, { resetForm }) {
+  handleSubmit = (values, { resetForm }) => {
     const { contacts } = this.state;
     const { name, number } = values;
     const isNameAlreadyExist = Boolean(
@@ -51,7 +51,7 @@ class App extends Component {
         contacts: [...prevState.contacts, { id: nanoid(), name, number }],
       };
     });
-  }
+  };
 
   filterContacts = () => {
     const { filter } = this.state;
@@ -74,7 +74,7 @@ class App extends Component {
       <>
         <Layout>
           <MainTitle>Phonebook</MainTitle>
-          <ContactForm handleSubmit={this.handleSubmit.bind(this)} />
+          <ContactForm handleSubmit={this.handleSubmit} />
           <SecondaryTitle>Contacts</SecondaryTitle>
           <FilterForm onChange={this.handleChange} />
           <ContactList renderData={renderData} onDelete={this.deleteContact} />

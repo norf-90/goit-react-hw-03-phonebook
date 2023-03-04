@@ -12,7 +12,11 @@ export const Form = styled(FormikForm)`
 
 export const Label = styled.label`
   display: flex;
+  align-items: flex-start;
+  height: 70px;
   gap: 24px;
+  color: #9dfaf1;
+  font-size: 18px;
 `;
 
 export const InputTitle = styled.span`
@@ -68,4 +72,11 @@ export const SubmitBtn = styled.button`
       }
     }
   }
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 `;
